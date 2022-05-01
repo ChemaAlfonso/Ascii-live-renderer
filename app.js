@@ -131,19 +131,16 @@ class AsciiRenderer {
 // ====================
 // "Low chary" config:
 // ====================
-const asciiGradient = '$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~<>i!lI;:,"^`.                          '
 const charsByLine           = window.innerWidth * .1
-const asciiContainerElement = document.querySelector('.ascii')
-const { width, height }     = asciiContainerElement.getBoundingClientRect()
-const asciiRenderer         = new AsciiRenderer(charsByLine, asciiContainerElement, width, height, asciiGradient )
-asciiRenderer.renderLive()
+const asciiGradient = '$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~<>i!lI;:,"^`.                          '
 
 // ====================
 // "Standard" config:
 // ====================
-// const charsByLine           = window.innerWidth * .21
-// const asciiContainerElement = document.querySelector('.ascii')
-// const { width, height }     = asciiContainerElement.getBoundingClientRect()
-// const asciiRenderer         = new AsciiRenderer(charsByLine, asciiContainerElement, width, height )
-// asciiRenderer.renderLive()
+// const charsByLine           = window.innerWidth * .18
+// const asciiGradient = null
 
+const asciiContainerElement = document.querySelector('.ascii')
+const { width, height }     = asciiContainerElement.getBoundingClientRect()
+const asciiRenderer         = new AsciiRenderer(charsByLine, asciiContainerElement, width, height, asciiGradient )
+asciiRenderer.renderLive()
