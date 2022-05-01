@@ -29,6 +29,9 @@ class AsciiRenderer {
     renderVideoStream( videoStream ) {
             
         const video     = document.createElement('video')
+        video.setAttribute('autoplay', '')
+        video.setAttribute('muted', '')
+        video.setAttribute('playsinline', '')
         video.width     = this.renderConfig.width
         video.height    = this.renderConfig.height
         video.srcObject = videoStream;
