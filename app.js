@@ -137,9 +137,12 @@ const RESOLUTION_ENUM = {
 // ====================
 const url = new URL(location.href)
 const params = new URLSearchParams(url.search)
-const charsByLine = RESOLUTION_ENUM[params.get('res')?.toUpperCase()] || RESOLUTION_ENUM.MID
+const charsByLine = RESOLUTION_ENUM[params.get('resolution')?.toUpperCase()] || RESOLUTION_ENUM.MID
 const asciiGradient = CHARS_ENUM[params.get('gradient')?.toUpperCase()] || CHARS_ENUM.ALPHA_CONTRAST
 
+// ====================
+// Init
+// ====================
 const asciiContainerElement = document.querySelector('.ascii')
 const { width, height } = asciiContainerElement.getBoundingClientRect()
 const asciiRenderer = new AsciiRenderer(charsByLine, asciiContainerElement, width, height, asciiGradient)
