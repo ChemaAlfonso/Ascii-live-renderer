@@ -116,18 +116,29 @@ class AsciiRenderer {
 // ==========================================
 // Demostration only - Uncomment desired one
 // ==========================================
+const CHARS_ENUM = {
+	SOFT: '<>[]{}()¯`´¨^~-=_+";:,.!*^',
+	MID: '}#*$+""!^~[]()/|<>_;,-.`\'',
+	ALPHA: '$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/|()1{}[]?-_+~<>i!lI;:,"^`.',
+	ALPHA_CONTRAST: '$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/|()1{}[]?-_+~<>i!lI;:,"^`.                          ',
+	DENSE: '█▓▒░#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/|()1{}[]¯`´¨^~-=_+";:,.!*^$#@%&',
+	PIRAMIDAL: '▁▂▃▄▅▆▇█▇▆▅▄▃▂▁▂▃▄▅▆▇█▇▆▅▄▃▂▁▂▃▄▅▆▇█▇▆▅▄▃▂▁▂▃▄▅▆▇█',
+	LINEAR: '░▒▓█▄▀▌▐─│┌┐└┘├┤┬┴┼'
+}
+
+const RESOLUTION_ENUM = {
+	LOW: window.innerWidth * 0.1,
+	MID: window.innerWidth * 0.14,
+	HIGHT: window.innerWidth * 0.18
+}
 
 // ====================
-// "Low chary" config:
+// Config:
 // ====================
-// const charsByLine           = window.innerWidth * .1
-// const asciiGradient = '$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~<>i!lI;:,"^`.                          '
-
-// ====================
-// "Standard" config:
-// ====================
-const charsByLine = window.innerWidth * 0.14
-const asciiGradient = null
+const url = new URL(location.href)
+const params = new URLSearchParams(url.search)
+const charsByLine = RESOLUTION_ENUM[params.get('res')?.toUpperCase()] || RESOLUTION_ENUM.MID
+const asciiGradient = CHARS_ENUM[params.get('gradient')?.toUpperCase()] || CHARS_ENUM.ALPHA_CONTRAST
 
 const asciiContainerElement = document.querySelector('.ascii')
 const { width, height } = asciiContainerElement.getBoundingClientRect()
