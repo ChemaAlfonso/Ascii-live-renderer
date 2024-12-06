@@ -117,13 +117,16 @@ class AsciiRenderer {
 // Demostration only - Uncomment desired one
 // ==========================================
 const CHARS_ENUM = {
+	DEFAULT: '$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/|()1{}[]?-_+~<>i!lI;:,"^`.                          ',
+	SIMPLE: '█▓▒░ ',
 	SOFT: '<>[]{}()¯`´¨^~-=_+";:,.!*^',
 	MID: '}#*$+""!^~[]()/|<>_;,-.`\'',
 	ALPHA: '$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/|()1{}[]?-_+~<>i!lI;:,"^`.',
 	ALPHA_CONTRAST: '$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/|()1{}[]?-_+~<>i!lI;:,"^`.                          ',
 	DENSE: '█▓▒░#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/|()1{}[]¯`´¨^~-=_+";:,.!*^$#@%&',
 	PIRAMIDAL: '▁▂▃▄▅▆▇█▇▆▅▄▃▂▁▂▃▄▅▆▇█▇▆▅▄▃▂▁▂▃▄▅▆▇█▇▆▅▄▃▂▁▂▃▄▅▆▇█',
-	LINEAR: '░▒▓█▄▀▌▐─│┌┐└┘├┤┬┴┼'
+	LINEAR: '░▒▓█▄▀▌▐─│┌┐└┘├┤┬┴┼',
+	LINEAR_CONTRAST: '░▒▓█▄▀▌▐─│┌┐└┘├┤┬┴┼'
 }
 
 const RESOLUTION_ENUM = {
@@ -147,3 +150,10 @@ const asciiContainerElement = document.querySelector('.ascii')
 const { width, height } = asciiContainerElement.getBoundingClientRect()
 const asciiRenderer = new AsciiRenderer(charsByLine, asciiContainerElement, width, height, asciiGradient)
 asciiRenderer.renderLive()
+
+// ====================
+// GUI
+// ====================
+const gui = new dat.GUI({ name: 'Ascii Live Renderer' })
+const config = gui.addFolder('Config')
+config.add(asciiRenderer, 'asciiGradient', Object.keys(CHARS_ENUM)).name('Gradient')
